@@ -1,5 +1,7 @@
-import React, {Component, PropTypes} from 'react';
-import {View, Text, StyleSheet, TouchableHighlight, TextInput} from 'react-native';
+'use strict';
+
+import React, { Component, PropTypes } from 'react';
+import { View, Text, StyleSheet, TouchableHighlight, TextInput } from 'react-native';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -13,9 +15,12 @@ import common_styles from '../styles/CommonStyles'
 import text_styles from '../styles/TextStyles'
 import box from '../styles/Box'
 
-// console.log(loginActions);
-
 class LoginScreen extends Component {
+
+  // componentDidMount() {
+  //   console.log('LoginScreen mounted')
+  //   console.log(this.props)
+  // }
 
 	state = {
 		email: '',
@@ -66,13 +71,13 @@ class LoginScreen extends Component {
   }
 }
 
-// export default LoginScreen
-
 function mapStateToProps(state) {
-	const email = 'state.email';
-	const password = 'state.password';
+	const email = state.email;
+	const password = state.password
+  // conn = state.conn
+  // console.log(state.conn.isConnected)
 	
-	return { email, password }
+	return { email, password}
 }
 
 function mapDispatchToProps(dispatch) {

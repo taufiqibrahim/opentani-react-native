@@ -19,6 +19,7 @@ export default StyleSheet.create({
 		color: '#FCFFFC',
 		alignSelf: 'center',
 		alignItems: 'stretch',
+		textAlign: 'center',
 	},
 
 	button_large_line_green: {
@@ -39,6 +40,7 @@ export default StyleSheet.create({
 		color: '#2BA84A',
 		alignSelf: 'center',
 		alignItems: 'stretch',
+		textAlign: 'center',
 	},
 
 	text_title_large: {
@@ -46,6 +48,7 @@ export default StyleSheet.create({
 		fontSize: 56,
 		color: '#2BA84A',
 		alignSelf: 'center',
+		textAlign: 'center',
 	},
 
 	text_description: {
@@ -54,6 +57,7 @@ export default StyleSheet.create({
 		color: '#505050',
 		alignSelf: 'center',
 		alignItems: 'stretch',
+		textAlign: 'center',
 	},
 
 	container_row: {

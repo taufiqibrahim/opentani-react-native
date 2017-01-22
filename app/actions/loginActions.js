@@ -35,7 +35,7 @@ export function logout() {
 
 export function login(userdata) {
 	return dispatch => {
-		fetch('http://192.168.0.145:3000/auth', {
+		fetch('http://103.7.226.221:3000/auth', {
 			method: 'post',
 			headers: {
         'Accept': 'application/json',
@@ -49,12 +49,12 @@ export function login(userdata) {
 		.then(response => response.json())
 		.then(res => {
 			if (res.status >= 200 && res.status < 300) {
-				// Login OK
+				// ----Login OK
 				dispatch(loginSuccess(res));
 				console.log(res);
 				dispatch(Actions.landingScreen);
 			} else {
-				// Login Failure
+				// ----Login Failure
 				console.log(res);
 				// const error = new Error(res.text);
 				let error = res.text;
