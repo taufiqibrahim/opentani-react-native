@@ -34,7 +34,7 @@ class NoConnectionScreen extends Component {
 
         </View>
 
-      </View>  
+      </View>
     )
   }
 }

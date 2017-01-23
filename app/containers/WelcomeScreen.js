@@ -26,7 +26,7 @@ class WelcomeScreen extends Component {
     console.log(this)
   }
   render () {
-    if (!this.props.isConnected) {
+    if (this.props.isConnected) {
       return (
         <View style={common_styles.container_row}>
           

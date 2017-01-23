@@ -5,7 +5,8 @@ import {
   View,
   Text,
   StyleSheet,
-  Dimensions
+  Dimensions,
+  AsyncStorage,
 } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import { connect } from 'react-redux'
@@ -20,6 +21,19 @@ class LandingScreen extends Component {
   static propTypes = {
     routes: React.PropTypes.object
   }
+
+  componentDidMount() {
+    // const token = AsyncStorage.getItem('token');
+    // console.log(token);
+    this._getStoredToken();
+  }
+
+  async _getStoredToken() {
+    var token = await AsyncStorage.getItem('token')
+    console.log(token);
+    return token
+  }
+
   render () {
     return (
       <View style={{

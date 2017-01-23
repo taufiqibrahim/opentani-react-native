@@ -2,6 +2,7 @@
 
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from './actionTypes'
 import { Actions } from 'react-native-router-flux'
+import { AsyncStorage, } from 'react-native'
 
 export function loginRequest(email, password) {
 	const user = {email: email, password: password}
@@ -33,9 +34,15 @@ export function logout() {
 	}
 }
 
+export function storeToken(token) {
+	// store token to Asyncstorage
+	AsyncStorage.setItem('token', token)
+}
+
 export function login(userdata) {
 	return dispatch => {
 		fetch('http://103.7.226.221:3000/auth', {
+		// fetch('http://192.168.0.145:3000/auth', {	
 			method: 'post',
 			headers: {
         'Accept': 'application/json',
@@ -52,6 +59,7 @@ export function login(userdata) {
 				// ----Login OK
 				dispatch(loginSuccess(res));
 				console.log(res);
+				storeToken(res.token);
 				dispatch(Actions.landingScreen);
 			} else {
 				// ----Login Failure
