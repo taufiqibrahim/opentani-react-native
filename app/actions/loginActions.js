@@ -60,7 +60,7 @@ export function login(userdata) {
 				dispatch(loginSuccess(res));
 				console.log(res);
 				storeToken(res.token);
-				dispatch(Actions.landingScreen);
+				dispatch(Actions.mainMenuScreen);
 			} else {
 				// ----Login Failure
 				console.log(res);

@@ -12,6 +12,8 @@ import NoConnectionScreen from './containers/NoConnectionScreen';
 import LoginScreen from './containers/LoginScreen';
 import LandingScreen from './containers/LandingScreen';
 
+import MainMenuScreen from './containers/MainMenuScreen';
+
 const RouterWithRedux = connect()(Router);
 const store = configureStore();
 
@@ -23,7 +25,7 @@ export default class App extends Component {
 				<RouterWithRedux>
 					<Scene key='root' hideNavBar>
 						<Scene 
-							key='splashScreen' component={SplashScreen} initial duration={2000}
+							key='splashScreen' component={SplashScreen}  duration={2000}
 						/>						
 						<Scene 
 							key='welcomeScreen' component={WelcomeScreen} type={ActionConst.REPLACE}
@@ -36,7 +38,12 @@ export default class App extends Component {
 						/>						
 						<Scene 
 							key='landingScreen' component={LandingScreen} type={ActionConst.REPLACE}
-						/>	
+						/>
+
+						<Scene 
+							key='mainMenuScreen' component={MainMenuScreen} type={ActionConst.REPLACE} initial
+						/>
+
 					</Scene>
 				</RouterWithRedux>
 			</Provider>
