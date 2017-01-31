@@ -32,33 +32,40 @@ class MainMenuScreen extends Component {
         <View style={grid.body}>
           <View style={grid.horizontal}>
             <FlexGrid
+              icon='map-o'
               label='Lahan'
             />
             <FlexGrid
+              icon='search'
               label='Pencarian'
             />     
           </View>
 
           <View style={grid.horizontal}>
             <FlexGrid
+              icon='area-chart'
               label='Pantau Harga'
             />
             <FlexGrid
+              icon='database'
               label='Database Varietas'
             />     
           </View>
 
           <View style={grid.horizontal}>
             <FlexGrid
+              icon='user-circle'
               label='Profil'
             />
             <FlexGrid
+              icon='gears'
               label='Pengaturan'
             />     
           </View>
 
         </View>
-        <View style={grid.footer}></View>
+        <View style={grid.footer}>
+        </View>
       </View>
     )
   

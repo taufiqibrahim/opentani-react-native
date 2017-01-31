@@ -2,14 +2,19 @@
 
 import React from 'react'
 import { View, Text, TouchableHighlight } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome'
+
 import grid from '../styles/Grid'
 import common_styles from '../styles/CommonStyles'
 
-export default ({label, onPress}) => (
+export default ({label, icon, onPress}) => (
   <View style={grid.item_plain}>
 	  <TouchableHighlight
 	    onPress={onPress} style={grid.button_grid_plain}>
-	    <Text style={grid.text_green}>{label}</Text>
+	    <View>
+	    	<Icon name={icon} style={grid.icon_green} />
+	    	<Text style={grid.text_green}>{label}</Text>
+	    </View>
 	  </TouchableHighlight>
 	 </View>
 )

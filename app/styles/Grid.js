@@ -34,14 +34,12 @@ export default StyleSheet.create({
 		borderColor: '#505050',
 	},
 	button_grid_plain: {
-		height: 48,
+		flex: 1,
 		backgroundColor: '#FCFFFC',
-		borderRadius: 8,
 		alignSelf: 'stretch',
 		alignItems: 'stretch',
 		justifyContent: 'center',
 		marginTop: 8,	
-		marginBottom: 8,	
 	},
 	title_text: {
 		fontFamily: 'sans-serif',
@@ -57,5 +55,13 @@ export default StyleSheet.create({
 		alignSelf: 'center',
 		textAlign: 'center',
 	},	
+	icon_green: {
+		fontFamily: 'sans-serif',
+		fontSize: 32,
+		color: '#2BA84A',
+		alignSelf: 'center',
+		textAlign: 'center',
+		marginBottom: 16,
+	},		
 	
 })
