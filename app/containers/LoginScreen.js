@@ -6,30 +6,32 @@ import { View, Text, StyleSheet, TouchableHighlight, TextInput } from 'react-nat
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as loginActions from '../actions/loginActions';
+import * as modalActions from '../actions/modalActions';
 
 import { Actions } from 'react-native-router-flux';
 
-import ButtonFillGreen from '../components/ButtonFillGreen'
-import ButtonLineGreen from '../components/ButtonLineGreen'
-import common_styles from '../styles/CommonStyles'
+import { ButtonFillLarge } from '../components/Button'
+import StatusModal from '../components/StatusModal'
+
+import container_styles from '../styles/ContainerStyles'
+import button_styles from '../styles/ButtonStyles'
 import text_styles from '../styles/TextStyles'
 import box from '../styles/Box'
 
 class LoginScreen extends Component {
 
-  // componentDidMount() {
-  //   console.log('LoginScreen mounted')
-  //   console.log(this.props)
-  // }
-
 	state = {
 		email: '',
 		password: '',
+
 	}
 
-	loginButtonHandler = () => {
+	toogleModal = () => {
+    this.props.actions.modalClose();
+  }
+
+  loginButtonHandler = () => {
 		const {email, password} = this.state;
-		console.log(email, password, this.props.actions);
 		this.props.actions.login({email, password});
 	}
 
@@ -38,9 +40,17 @@ class LoginScreen extends Component {
   	const { email, password } = this.state;
 
     return (
-      <View style={common_styles.container_row}>
+      <View style={container_styles.container_row}>
+
+      <StatusModal 
+        transparent={true}
+        visible={this.props.modalVisible}
+        message={this.props.modalMessage}
+        onPress={this.toogleModal}
+      />
+
         <View style={box.box_upper}>
-          <Text style={common_styles.text_description}>Selamat datang kembali di komunitas Opentani</Text>
+          <Text style={button_styles.text_description}>Selamat datang kembali di komunitas Opentani</Text>
           <View style={{height: 64}}></View>
 
           <TextInput           
@@ -61,7 +71,7 @@ class LoginScreen extends Component {
 
         </View>
         <View style={box.box_lower}>
-          <ButtonFillGreen 
+          <ButtonFillLarge 
           	label='Masuk' 
           	onPress={this.loginButtonHandler.bind(this)}
           />
@@ -72,22 +82,21 @@ class LoginScreen extends Component {
 }
 
 function mapStateToProps(state) {
-	const email = state.email;
-	const password = state.password
-  // conn = state.conn
-  // console.log(state.conn.isConnected)
+	const email = state.login.email
+	const password = state.login.password
+  const error = state.login.error
+  const errorMessage = state.login.errorMessage
+  const modalVisible = state.modal.modalVisible
+  const modalMessage = state.modal.modalMessage
+	// console.log(state.login)
 	
-	return { email, password}
+  return { email, password, error, errorMessage, modalVisible, modalMessage}
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators(loginActions, dispatch),
+    actions: bindActionCreators( Object.assign({}, loginActions, modalActions ) , dispatch),
 	}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)
-
-// export default connect(mapStateToProps)(LoginScreen)
-
-// export default connect(({routes}) => ({routes}))(LoginScreen)

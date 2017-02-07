@@ -2,7 +2,7 @@ import {StyleSheet, Dimensions} from 'react-native';
 
 export default StyleSheet.create({
 
-	button_large_fill_green: {
+	button_fill_large: {
 		height: 48,
 		backgroundColor: '#2BA84A',
 		borderRadius: 8,
@@ -13,7 +13,7 @@ export default StyleSheet.create({
 		marginBottom: 8,
 	},
 
-	text_button_large_fill: {
+	text_button_fill_large: {
 		fontFamily: 'sans-serif',
 		fontSize: 24,
 		color: '#FCFFFC',
@@ -22,7 +22,7 @@ export default StyleSheet.create({
 		textAlign: 'center',
 	},
 
-	button_large_line_green: {
+	button_line_large: {
 		height: 48,
 		borderColor: '#2BA84A',
 		borderWidth: 2,
@@ -34,7 +34,7 @@ export default StyleSheet.create({
 		marginBottom: 8,
 	},
 
-	text_button_large_line: {
+	text_button_line_large: {
 		fontFamily: 'sans-serif',
 		fontSize: 24,
 		color: '#2BA84A',
@@ -43,29 +43,45 @@ export default StyleSheet.create({
 		textAlign: 'center',
 	},
 
-	text_title_large: {
-		fontFamily: 'sans-serif',
-		fontSize: 56,
-		color: '#2BA84A',
-		alignSelf: 'center',
-		textAlign: 'center',
+	button_fill_small: {
+		height: 36,
+		backgroundColor: '#2BA84A',
+		borderRadius: 8,
+		alignSelf: 'stretch',
+		alignItems: 'stretch',
+		justifyContent: 'center',
+		marginTop: 8,	
+		marginBottom: 8,
 	},
 
-	text_description: {
+	text_button_fill_small: {
 		fontFamily: 'sans-serif',
-		fontSize: 14,
-		color: '#505050',
+		fontSize: 18,
+		color: '#FCFFFC',
 		alignSelf: 'center',
 		alignItems: 'stretch',
 		textAlign: 'center',
 	},
 
-	container_row: {
-		flex: 1,
-		alignItems: 'center',
+	button_line_small: {
+		height: 36,
+		borderColor: '#2BA84A',
+		borderWidth: 2,
+		borderRadius: 8,
+		alignSelf: 'stretch',
+		alignItems: 'stretch',
 		justifyContent: 'center',
-		backgroundColor: '#FCFFFC',
-		height: Dimensions.get('window').height,
+		marginTop: 8,	
+		marginBottom: 8,
+	},
+
+	text_button_line_small: {
+		fontFamily: 'sans-serif',
+		fontSize: 18,
+		color: '#2BA84A',
+		alignSelf: 'center',
+		alignItems: 'stretch',
+		textAlign: 'center',
 	},
 	
 })

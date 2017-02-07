@@ -9,5 +9,12 @@ export default StyleSheet.create({
 		alignSelf: 'stretch',
 		alignItems: 'stretch',
 	},
+	text_error: {
+		fontFamily: 'sans-serif',
+		fontSize: 16,
+		color: 'red',
+		alignSelf: 'stretch',
+		alignItems: 'stretch',
+	},
 	
 })

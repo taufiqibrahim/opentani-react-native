@@ -11,9 +11,7 @@ import {
 import { Actions } from 'react-native-router-flux'
 import { connect } from 'react-redux'
 
-import ButtonFillGreen from '../components/ButtonFillGreen'
-import ButtonLineGreen from '../components/ButtonLineGreen'
-import common_styles from '../styles/CommonStyles'
+import button_styles from '../styles/ButtonStyles'
 import text_styles from '../styles/TextStyles'
 import box from '../styles/Box'
 

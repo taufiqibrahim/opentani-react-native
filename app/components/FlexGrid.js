@@ -5,7 +5,7 @@ import { View, Text, TouchableHighlight } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 import grid from '../styles/Grid'
-import common_styles from '../styles/CommonStyles'
+import button_styles from '../styles/ButtonStyles'
 
 export default ({label, icon, onPress}) => (
   <View style={grid.item_plain}>

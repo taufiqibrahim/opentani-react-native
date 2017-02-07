@@ -9,9 +9,6 @@ import * as connActions from '../actions/connActions';
 
 import { Actions } from 'react-native-router-flux'
 
-import ButtonFillGreen from '../components/ButtonFillGreen'
-import ButtonLineGreen from '../components/ButtonLineGreen'
-import common_styles from '../styles/CommonStyles'
 import text_styles from '../styles/TextStyles'
 import box from '../styles/Box'
 

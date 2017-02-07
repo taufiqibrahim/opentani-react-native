@@ -1,12 +1,14 @@
 'use strict';
 
 import {combineReducers} from 'redux';
+import modal from './modalReducer';
 import conn from './connReducer';
 import route from './routeReducer';
-import user from './userReducer';
+import login from './loginReducer';
 
 export default combineReducers({
 	route,
 	conn,
-	user,
+	modal,
+	login,
 })

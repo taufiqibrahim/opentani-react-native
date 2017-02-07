@@ -9,6 +9,7 @@ const initialState = {
 	email: '',
 	password: '',
 	error: null,
+	errorMessage: null,
 }
 
 export default function user(state =  initialState, action) {
@@ -32,6 +33,7 @@ export default function user(state =  initialState, action) {
 				isLoggingIn: false,
 				isLoggedIn: false,
 				error: action.error,
+				errorMessage: action.errorMessage,
 			})
 		case LOGOUT:
 			return initialState;
