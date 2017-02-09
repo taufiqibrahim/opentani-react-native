@@ -23,7 +23,6 @@ class LoginScreen extends Component {
 	state = {
 		email: '',
 		password: '',
-
 	}
 
 	toogleModal = () => {
@@ -63,6 +62,7 @@ class LoginScreen extends Component {
 
           <TextInput          
             editable= {true}
+            secureTextEntry={true}
             placeholder="Kata Sandi"
             onChangeText={password => this.setState({password})}
             value={password}
@@ -88,7 +88,6 @@ function mapStateToProps(state) {
   const errorMessage = state.login.errorMessage
   const modalVisible = state.modal.modalVisible
   const modalMessage = state.modal.modalMessage
-	// console.log(state.login)
 	
   return { email, password, error, errorMessage, modalVisible, modalMessage}
 }

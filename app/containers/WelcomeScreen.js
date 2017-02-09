@@ -26,23 +26,25 @@ class WelcomeScreen extends Component {
   componentDidMount(){
     console.log(this)
   }
+
   render () {
     if (this.props.isConnected) {
       return (
         <View style={container_styles.container_row}>
           
           <View style={box.box_upper}>
-            <Text style={button_styles.text_title_large}>Opentani</Text>
+            <Text style={text_styles.text_title_large}>Opentani</Text>
           </View>
 
           <View style={box.box_lower}>
-            <Text style={button_styles.text_description}>Belum punya akun?</Text>
-            <ButtonLineLarge onPress={Actions.signup} label='Bergabung' />
+            <Text style={text_styles.text_description}>Belum punya akun?</Text>
+            <ButtonLineLarge onPress={Actions.signupScreen} label='Bergabung' />
 
             <View style={{height: 16}}></View> 
 
             <ButtonFillLarge onPress={Actions.loginScreen} label='Masuk' />
-            <Text style={button_styles.text_description}>Sudah terdaftar?</Text>
+            <Text style={text_styles.text_description}>Sudah terdaftar?</Text>
+            
             <Text>{this.props.isConnected ? 'Connected' : 'No Connection'}</Text>
 
           </View>

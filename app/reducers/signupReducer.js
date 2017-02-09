@@ -1,11 +1,12 @@
 'use strict'
 
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from '../actions/actionTypes'
+import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE } from '../actions/actionTypes'
 
 const initialState = {
-	isLoggedIn: false,
-	isLoggingIn: false,
-	token: '',
+	isSignedIn: false,
+	isSigningIn: false,
+	ektp_id: null,
+	username: null,
 	email: '',
 	password: '',
 	error: null,
@@ -14,28 +15,28 @@ const initialState = {
 
 export default function user(state =  initialState, action) {
 	switch(action.type) {
-		case LOGIN_REQUEST:
+		case SIGNUP_REQUEST:
 			return Object.assign({}, state, {
-				isLoggingIn: true,
-				isLoggedIn: false,
+				isSigningIn: true,
+				isSignedIn: false,
+				ektp_id: action.ektp_id,
+				username: action.username,
 				email: action.email,
 				password: action.password,
 			})
-		case LOGIN_SUCCESS:
+		case SIGNUP_SUCCESS:
 			return Object.assign({}, state, {
-				isLoggingIn: false,
-				isLoggedIn: true,
+				isSigningIn: false,
+				isSignedIn: true,
 				token: action.response.token,
 			})
-		case LOGIN_FAILURE:
+		case SIGNUP_FAILURE:
 			return Object.assign({}, state, {
 				isLoggingIn: false,
 				isLoggedIn: false,
 				error: action.error,
 				errorMessage: action.errorMessage,
 			})
-		case LOGOUT:
-			return initialState;
 		default:
 			return state;
 	}

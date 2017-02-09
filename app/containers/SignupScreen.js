@@ -5,11 +5,13 @@ import { View, Text, StyleSheet, TouchableHighlight, TextInput } from 'react-nat
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as loginActions from '../actions/loginActions';
+import * as signupActions from '../actions/signupActions';
+import * as modalActions from '../actions/modalActions';
 
 import { Actions } from 'react-native-router-flux';
 
-import ButtonFillGreen from '../components/Button'
+import { ButtonLineLarge } from '../components/Button'
+import StatusModal from '../components/StatusModal'
 
 import container_styles from '../styles/ContainerStyles'
 import button_styles from '../styles/ButtonStyles'
@@ -18,62 +20,62 @@ import box from '../styles/Box'
 
 class SignupScreen extends Component {
 
-  // componentDidMount() {
-  //   console.log('LoginScreen mounted')
-  //   console.log(this.props)
-  // }
+  state = {
+    ektp_id: '',
+    username: '',
+    email: '',
+    password: '',
+  }
 
-  constructor(props) {
-    super(props);
-  
-    this.state = {
-      ektp_id: "",
-      username: "",
-      email: "",
-      password: "",
-      errors: {},
-      api_error: ""
-    };
+  toogleModal = () => {
+    this.props.actions.modalClose();
   }
 
 	signupButtonHandler = () => {
-		const {email, password} = this.state;
-		console.log(email, password, this.props.actions);
-		this.props.actions.login({email, password});
+		const {ektp_id, username, email, password} = this.state;
+		this.props.actions.signup({ektp_id, username, email, password});
 	}
 
   render() {
 
-  	const { email, password } = this.state;
+  	const { ektp_id, username, email, password } = this.state;
 
     return (
       <View style={container_styles.container_row}>
+
+      <StatusModal 
+        transparent={true}
+        visible={this.props.modalVisible}
+        message={this.props.modalMessage}
+        onPress={this.toogleModal}
+      />      
+
         <View style={box.box_upper}>
-          <Text style={button_styles.text_description}>Bergabung bersama komunitas Opentani</Text>
+          <Text style={text_styles.text_description}>Bergabung bersama komunitas Opentani</Text>
           <View style={{height: 64}}></View>
           <TextInput
-            onChangeText = {(value) => this.setState({ektp_id: value})}
+            onChangeText={ektp_id => this.setState({ektp_id})}
             editable= {true}
             maxLength= {40}
             placeholder="Nomor EKTP"
             style={text_styles.text_input}
           />
           <TextInput
-            onChangeText = {(value) => this.setState({username: value})}
+            onChangeText={username => this.setState({username})}
             editable= {true}
             maxLength= {40}
             placeholder="Nama pengguna"
             style={text_styles.text_input}
           />
           <TextInput
-            onChangeText = {(value) => this.setState({email: value})}
+            onChangeText={email => this.setState({email})}
             editable= {true}
             maxLength= {40}
             placeholder="Email"
             style={text_styles.text_input}
           />
           <TextInput
-            onChangeText = {(value) => this.setState({password: value})}
+            onChangeText={password => this.setState({password})}
             editable= {true}
             maxLength= {40}
             placeholder="Kata sandi"
@@ -82,11 +84,10 @@ class SignupScreen extends Component {
           />      
         </View>         
         <View style={box.box_lower}>
-          <ButtonFillLarge 
-            label='Daftar' 
+          <ButtonLineLarge 
+            label='Bergabung' 
             onPress={this.signupButtonHandler.bind(this)}
           />
-          <Text style={text_styles.text_error}>{this.state.api_error}</Text>   
         </View>                                
       </View>
     )
@@ -94,22 +95,22 @@ class SignupScreen extends Component {
 }
 
 function mapStateToProps(state) {
-	const email = state.email;
-	const password = state.password
-  // conn = state.conn
-  // console.log(state.conn.isConnected)
+	const ektp_id = state.signup.ektp_id
+  const username = state.signup.username
+  const email = state.signup.email
+	const password = state.signup.password
+  const error = state.signup.error
+  const errorMessage = state.signup.errorMessage  
+  const modalVisible = state.modal.modalVisible
+  const modalMessage = state.modal.modalMessage
 	
-	return { email, password}
+	return { ektp_id, username, email, password, error, errorMessage, modalVisible, modalMessage}
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
-		actions: bindActionCreators(loginActions, dispatch),
+		actions: bindActionCreators( Object.assign({}, signupActions, modalActions ) , dispatch),
 	}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignupScreen)
-
-// export default connect(mapStateToProps)(LoginScreen)
-
-// export default connect(({routes}) => ({routes}))(LoginScreen)

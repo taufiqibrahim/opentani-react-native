@@ -1,38 +1,32 @@
 'use strict'
 
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from './actionTypes'
+import { SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE } from './actionTypes'
 import { Actions } from 'react-native-router-flux'
 import { AsyncStorage, } from 'react-native'
 import * as ModalActions from './modalActions'
 
-export function loginRequest(email, password) {
-	const user = {email: email, password: password}
+export function signupRequest(ektp_id, username, email, password) {
+	const user = {ektp_id: ektp_id, username: username, email: email, password: password}
 	return {
-		type: LOGIN_REQUEST,
+		type: SIGNUP_REQUEST,
 		user,
 	}
 }
 
-export function loginSuccess(response) {
+export function signupSuccess(response) {
 	return dispatch => {
 		dispatch({
-			type: LOGIN_SUCCESS,
+			type: SIGNUP_SUCCESS,
 			response,
 		})
 	}
 }
 
-export function loginFailure(error, errorMessage) {
+export function signupFailure(error, errorMessage) {
 	return {
-		type: LOGIN_FAILURE,
+		type: SIGNUP_FAILURE,
 		error,
 		errorMessage,
-	}
-}
-
-export function logout() {
-	return {
-		type: LOGOUT,
 	}
 }
 
@@ -41,15 +35,17 @@ export function storeToken(token) {
 	AsyncStorage.setItem('token', token)
 }
 
-export function login(userdata) {
+export function signup(userdata) {
 	return dispatch => {
-		fetch('http://103.7.226.221:3000/auth', {
+		fetch('http://103.7.226.221:3000/signup', {
 			method: 'post',
 			headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',				
 			},
 			body: JSON.stringify({
+				ektp_id: userdata.ektp_id,
+				username: userdata.username,
 				email: userdata.email,
 				password: userdata.password,
 			}),
@@ -57,16 +53,16 @@ export function login(userdata) {
 		.then(response => response.json())
 		.then(res => {
 			if (res.status >= 200 && res.status < 300) {
-				// ----Login OK
-				dispatch(loginSuccess(res));
-				// console.log(res);
+				// ----SIGNUP OK!
+				dispatch(signupSuccess(res));
 				storeToken(res.token);
 				dispatch(Actions.mainMenuScreen);
 			} else {
-				// ----Login Failure
+				// ----SIGNUP Failure!
+				console.log(res);
 				let error = res.text; 
 				let errorMessage = res.error.message;
-				dispatch(loginFailure(error, errorMessage));
+				dispatch(signupFailure(error, errorMessage));
 				dispatch(ModalActions.modalShow(errorMessage));
 			}
 		})

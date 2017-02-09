@@ -24,8 +24,6 @@ export function checkConnectivity(isConnected) {
 			// dispatch(Actions.welcomeScreen)
 		} else {
 			console.log('internet modar')
-		}
-
-		
+		}	
 	}
 }

@@ -27,22 +27,21 @@ export default class App extends Component {
 		return (
 			<Provider store={store}>
 				<RouterWithRedux>
-					<Scene key='modal' component={Modal}>
 						<Scene key='root' hideNavBar>
 							<Scene 
-								key='splashScreen' component={SplashScreen}  duration={2000}
+								key='splashScreen' component={SplashScreen} duration={2000} initial
 							/>						
 							<Scene 
-								key='welcomeScreen' component={WelcomeScreen} type={ActionConst.REPLACE}
+								key='welcomeScreen' component={WelcomeScreen} type={ActionConst.RESET}
 							/>
 							<Scene 
-								key='noConnectionScreen' component={NoConnectionScreen} type={ActionConst.REPLACE}
+								key='noConnectionScreen' component={NoConnectionScreen} type={ActionConst.RESET}
 							/>	
 							<Scene 
 								key='signupScreen' component={SignupScreen} 
 							/>
 							<Scene 
-								key='loginScreen' component={LoginScreen} initial
+								key='loginScreen' component={LoginScreen} 
 							/>						
 							<Scene 
 								key='landingScreen' component={LandingScreen} type={ActionConst.REPLACE}
@@ -54,8 +53,6 @@ export default class App extends Component {
 								key='lahanScreen' component={LahanScreen}
 							/>
 						</Scene>
-						<Scene key='statusModal' component={StatusModal} />
-					</Scene>
 				</RouterWithRedux>
 			</Provider>
 		)

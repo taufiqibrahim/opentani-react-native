@@ -43,5 +43,4 @@ export default class StatusModal extends Component {
       </View>
 		)
 	}
-
 }
